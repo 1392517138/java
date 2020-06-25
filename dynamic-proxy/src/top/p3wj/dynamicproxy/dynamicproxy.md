@@ -20,9 +20,9 @@
 
 ### 二、**反射机制提供的功能**
 
-➢在运行时判断任意一-个对象所属的类
-➢在运行时构造任意--个类的对象
-➢在运行时判断任意一一个类所具有的成员变量和方法
+➢在运行时判断任意一个对象所属的类
+➢在运行时构造任意一个类的对象
+➢在运行时判断任意一个类所具有的成员变量和方法
 ➢在运行时获取泛型信息
 ➢在运行时调用任意一-个对象的成员变量和方法
 ➢在运行时处理注解
@@ -68,21 +68,21 @@ java.lang.reflect.Constructor
 
 类的初始化（Initialize）jvm负责对类进行初始化
 
-●加载:将class文件 字节码内容加载到内存中，并将这些静态数据转换成方法区的运行时数据结构，然后生成一-一个代表这个类的java.lang.Class对象，作为方法区中类数据的访问入口(即引用地址)。所有需要访问和使用类数据只能通过这个Class对象。这个加载的过程需要类加载器参与。
+●加载:将class文件 字节码内容加载到内存中，并将这些静态数据转换成方法区的运行时数据结构，然后生成一个代表这个类的java.lang.Class对象，作为方法区中类数据的访问入口(即引用地址)。所有需要访问和使用类数据只能通过这个Class对象。这个加载的过程需要类加载器参与。
 ●链接:将Java类的二进制代码合并到JVM的运行状态之中的过程。
 ➢验证:确保加载的类信息符合JVM规范，例如:以cafe开头， 没有安全方面的问题
 ➢准备:正式为类变量(static) 分配内存并**设置类变量默认初始值的阶段**，这些内存都将在方法区中进行分配。
 ➢解析:虚拟机常量池内的符号引用(常量名)替换为直接引用(地址)的过程。
 ●初始化:
 ➢**执行类构造器<clinit>()**方法的过程。**类构造器<clinit>()方法是由编译期自动收集类中所有类变量的赋值动作和静态代码块中的语句合并产生的。( 类构造器是构造类信息的，不是构造该类对象的构造器)。**
-➢当初始化- -个类的时候，如果发现其父类还没有进行初始化，则需要先触发其父类的初始化。
+➢当初始化一个类的时候，如果发现其父类还没有进行初始化，则需要先触发其父类的初始化。
 ➢虚拟机会保证一个类的<clinit>()方法在 多线程环境中被正确加锁和同步。
 
-![image-20200613193722323](https://github.com/1392517138/imgRepository/blob/master/image-20200613193722323.png)
+![image-20200613193722323](https://raw.githubusercontent.com/1392517138/imgRepository/master/image-20200613193722323.png)
 
 **类加载器作用是用来把类(class)装载进内存的。**JVM规范定义了如下类型的类的加载器。
 
-![image-20200613193828389](https://github.com/1392517138/imgRepository/blob/master/image-20200613193828389.png)
+![image-20200613193828389](C:\Users\Administrator\Desktop\image-20200613193828389.png)
 
 ### 四、动态代理（反射的动态性）
 
@@ -90,7 +90,7 @@ java.lang.reflect.Constructor
 
 **●代理设计模式的原理:**
 使用一个代理将对象包装起来,然后用该代理对象取代原始对象。任何对原始对象的调用都要通过代理。代理对象决定是否以及何时将方法调用转到原始对象上。
-●之前为大家讲解过代理机制的操作，属于静态代理，特征是代理类和目标对象的类都是在编译期间确定下来，不利于程序的扩展。同时，每-一个代理类只能为一一个接口服务，这样-来程序开发中必然产生过多的代理。**最好可以通过一个代理类完成全部的代理功能。**
+●之前为大家讲解过代理机制的操作，属于静态代理，特征是代理类和目标对象的类都是在编译期间确定下来，不利于程序的扩展。同时，每一个代理类只能为一个接口服务，这样-来程序开发中必然产生过多的代理。**最好可以通过一个代理类完成全部的代理功能。**
 
 因为是在运行期间进行动态代理，所以我们这里用到反射
 
@@ -140,7 +140,7 @@ public class StaticProxyTest {
 }
 ```
 
-![image-20200620214828814](https://github.com/1392517138/imgRepository/blob/master/image-20200620214828814.png)
+![image-20200620214828814](https://raw.githubusercontent.com/1392517138/imgRepository/master/image-20200620214828814.png)
 
 ### 六、动态代理举例
 
@@ -148,15 +148,15 @@ public class StaticProxyTest {
 
 我们来看一下
 
-![image-20200620220444767](https://github.com/1392517138/imgRepository/blob/master/image-20200620220444767.png)
+![image-20200620220444767](https://raw.githubusercontent.com/1392517138/imgRepository/master/image-20200620220444767.png)
 
 再来看一下InvocationHandler
 
-![image-20200620220521362](https://github.com/1392517138/imgRepository/blob/master/image-20200620220521362.png)
+![image-20200620220521362](https://raw.githubusercontent.com/1392517138/imgRepository/master/image-20200620220521362.png)
 
 invocationHandler的invoke方法
 
-![image-20200620220550718](https://github.com/1392517138/imgRepository/blob/master/image-20200620220550718.png)
+![image-20200620220550718](https://raw.githubusercontent.com/1392517138/imgRepository/master/image-20200620220550718.png)
 
 上代码：
 
@@ -186,7 +186,7 @@ class SuperMan implements Human{
 
 /**
  * 要想实现动态代理，需要解决的问题
- * 问题一：如何根据加载到内存中的被带离类，动态的创建一个代理类及其对象
+ * 问题一：如何根据加载到内存中的被代理类，动态的创建一个代理类及其对象
  * 问题二：当通过代理类的对象调用方法a时，如何动态的去调用被带代理类中的同名方法a
  */
 //针对问题一
@@ -235,30 +235,29 @@ public class ProxyTest {
 
 **运行结果：**
 
-![image-20200620223641708](https://github.com/1392517138/imgRepository/blob/master/image-20200620223641708.png)
+![image-20200620223641708](https://raw.githubusercontent.com/1392517138/imgRepository/master/image-20200620223641708.png)
 
 
 
 ### 七、AOP与动态代理的举例
 
-![image-20200620224128287](https://github.com/1392517138/imgRepository/blob/master/image-20200620224128287.png)
+![image-20200620224128287](https://raw.githubusercontent.com/1392517138/imgRepository/master/image-20200620224128287.png)
 
-![image-20200620224201342](https://github.com/1392517138/imgRepository/blob/master/image-20200620224201342.png)
+
 
 
 
 我们在前面代码的基础上来体验一下
 
-![image-20200620224305739](https://github.com/1392517138/imgRepository/blob/master/image-20200620224305739.png)
+![image-20200620224305739](https://raw.githubusercontent.com/1392517138/imgRepository/master/image-20200620224305739.png)
 
 修改如下：
-![image-20200620224722612](https://github.com/1392517138/imgRepository/blob/master/image-20200620224722612.png)
+![image-20200620224722612](https://raw.githubusercontent.com/1392517138/imgRepository/master/image-20200620224722612.png)
 
-![image-20200620224759066](https://github.com/1392517138/imgRepository/blob/master/image-20200620224759066.png)
+![image-20200620224759066](https://raw.githubusercontent.com/1392517138/imgRepository/master/image-20200620224759066.png)
 
 **结果：**
 
-![image-20200620224819450](https://github.com/1392517138/imgRepository/blob/master/image-20200620224819450.png)
+![image-20200620224819450](https://raw.githubusercontent.com/1392517138/imgRepository/master/image-20200620224819450.png)
 
 好处就在于我们不用跟以前一样将共同代码抽出来后，还需要在原来的几个方法中显示地去调用这个方法
-
